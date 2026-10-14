@@ -940,6 +940,13 @@ function guardarCarrito() {
 // =======================
 // 📲 ENVIAR PEDIDO POR WHATSAPP
 // =======================
+// ⚠️ NÚMERO DE WHATSAPP DE LA TIENDA (para recibir los pedidos).
+//     Formato: 52 (México) + lada + número, SOLO dígitos.
+//     Ejemplo: "526461234567"
+//     Vacío ("") por ahora: WhatsApp se abre para que el cliente
+//     elija el chat. PON AQUÍ EL NÚMERO NUEVO CUANDO LO TENGA.
+const NUMERO_WHATSAPP = "";
+
 function enviarPedido() {
     const nombreCampo = document.getElementById("nombreCliente");
     const selectHorario = document.getElementById("horario");
@@ -995,7 +1002,7 @@ function enviarPedido() {
     mensaje += "✅ Confirma tu pedido por favor 🙌";
 
     // encodeURIComponent evita que nombres con &, # o ñ rompan la URL
-    const url = `https://wa.me/526463849069?text=${encodeURIComponent(mensaje)}`;
+    const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
 }
 
