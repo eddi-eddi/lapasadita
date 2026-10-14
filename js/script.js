@@ -129,11 +129,16 @@ function restaurarDatosPedido() {
 //     admin/config.yml (campo "Categoría") para que aparezca
 //     como opción en el panel de administración.
 const CATEGORIAS = {
-    carniceria: { titulo: "Carnicería",        carpeta: "carniceria" },
-    frutas:     { titulo: "Frutas y Verduras", carpeta: "frutasyverduras" },
-    lacteos:    { titulo: "Lácteos",           carpeta: "lacteos" },
-    bebidas:    { titulo: "Bebidas",           carpeta: "bebidas" },
-    snacks:     { titulo: "Snacks",            carpeta: "snacks" }
+    frutas:       { titulo: "Frutas y Verduras",  carpeta: "frutasyverduras" },
+    carniceria:   { titulo: "Carnicería",         carpeta: "carniceria" },
+    lacteos:      { titulo: "Lácteos",            carpeta: "lacteos" },
+    bebidas:      { titulo: "Bebidas",            carpeta: "bebidas" },
+    agua:         { titulo: "Agua y Gas",         carpeta: "aguaygas" },
+    abarrotes:    { titulo: "Abarrotes",          carpeta: "abarrotes" },
+    pan:          { titulo: "Pan y Tortillas",    carpeta: "pan" },
+    snacks:       { titulo: "Snacks y Dulces",    carpeta: "snacks" },
+    higiene:      { titulo: "Higiene y Limpieza", carpeta: "higiene" },
+    medicamentos: { titulo: "Medicamentos",       carpeta: "medicamentos" }
 };
 
 // =======================

@@ -130,7 +130,7 @@ img/frutasyverduras/   img/bebidas/
 | Campo | Obligatorio | Qué hace | Ejemplo |
 |---|---|---|---|
 | `nombre` | ✅ | Texto tal como lo ve el cliente. | `"Monster Energy 473ml"` |
-| `categoria` | ✅ | `carniceria` · `frutas` · `lacteos` · `bebidas` · `snacks` | `"snacks"` |
+| `categoria` | ✅ | `frutas` · `carniceria` · `lacteos` · `bebidas` · `agua` · `abarrotes` · `pan` · `snacks` · `higiene` · `medicamentos` | `"snacks"` |
 | `precio` | ✅ | Solo el número, sin `$` ni comas. | `179.50` |
 | `imagen` | ✅ | Ruta de la foto. | `"img/snacks/monster.jpg"` |
 | `unidad` | ❌ | Texto después del precio. Vacío si no aplica. | `"kg"`, `"pza"`, `"lt"` |
@@ -170,7 +170,7 @@ A mano, borra su bloque. **No borres la foto**, puede que la uses luego.
 Si prefieres que yo lo haga, dame estos 4 datos:
 
 1. **Nombre** — *"Sabritas Adobadas 42g"*
-2. **Categoría** — `carniceria` · `frutas` · `lacteos` · `bebidas` · `snacks`
+2. **Categoría** — `frutas` · `carniceria` · `lacteos` · `bebidas` · `agua` · `abarrotes` · `pan` · `snacks` · `higiene` · `medicamentos`
 3. **Precio** — `$25`
 4. **¿Promo?** sí/no · **¿Carrusel?** sí/no
 
@@ -188,12 +188,14 @@ Si prefieres que yo lo haga, dame estos 4 datos:
 
 ## 🧩 Si cambias las categorías
 
-Hay que actualizar **dos** lugares:
+Hay que actualizar **tres** lugares:
 
 1. `js/script.js` → el bloque `CATEGORIAS`
 2. `admin/config.yml` → el campo `Categoría`, añadiendo la opción
+3. `index.html` → el menú (`nav.menu`), para que salga en la página
 
-Dejarlo desincronizado hace que el producto no se pueda elegir en el panel.
+Dejarlos desincronizados hace que el producto no se pueda elegir
+en el panel, o que la categoría exista pero no tenga botón en el menú.
 
 ---
 

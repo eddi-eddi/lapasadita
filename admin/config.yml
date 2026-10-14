@@ -92,11 +92,16 @@ collections:
         required: true
         hint: "Define en qué sección aparece el producto."
         options:
-          - { label: "Carnicería",          value: carniceria }
           - { label: "Frutas y Verduras",   value: frutas }
+          - { label: "Carnicería",          value: carniceria }
           - { label: "Lácteos",             value: lacteos }
           - { label: "Bebidas",             value: bebidas }
-          - { label: "Snacks",              value: snacks }
+          - { label: "Agua y Gas",          value: agua }
+          - { label: "Abarrotes",           value: abarrotes }
+          - { label: "Pan y Tortillas",     value: pan }
+          - { label: "Snacks y Dulces",     value: snacks }
+          - { label: "Higiene y Limpieza",  value: higiene }
+          - { label: "Medicamentos",        value: medicamentos }
 
       - label: Precio
         name: precio
