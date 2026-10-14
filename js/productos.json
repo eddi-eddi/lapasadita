@@ -119,16 +119,5 @@
     "carrusel": false,
     "destacado": true,
     "nota": "PRECIO PROVISIONAL: se cargó de ejemplo. Confirmar el precio real."
-  },
-  {
-    "nombre": "Galletas Maria",
-    "categoria": "snacks",
-    "precio": 25,
-    "unidad": "250g",
-    "imagen": "/img/galletas-maria.png",
-    "promo": true,
-    "carrusel": false,
-    "destacado": true,
-    "nota": "revertir cambios de promo en 1 mes"
   }
 ]
