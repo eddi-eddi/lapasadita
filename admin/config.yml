@@ -98,7 +98,7 @@ collections:
           - { label: "Bebidas",             value: bebidas }
           - { label: "Agua y Gas",          value: agua }
           - { label: "Abarrotes",           value: abarrotes }
-          - { label: "Pan y Tortillas",     value: pan }
+          - { label: "Tortillas",             value: pan }
           - { label: "Snacks y Dulces",     value: snacks }
           - { label: "Higiene y Limpieza",  value: higiene }
           - { label: "Medicamentos",        value: medicamentos }

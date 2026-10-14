@@ -135,7 +135,7 @@ const CATEGORIAS = {
     bebidas:      { titulo: "Bebidas",            carpeta: "bebidas" },
     agua:         { titulo: "Agua y Gas",         carpeta: "aguaygas" },
     abarrotes:    { titulo: "Abarrotes",          carpeta: "abarrotes" },
-    pan:          { titulo: "Pan y Tortillas",    carpeta: "pan" },
+    pan:          { titulo: "Tortillas",          carpeta: "pan" },
     snacks:       { titulo: "Snacks y Dulces",    carpeta: "snacks" },
     higiene:      { titulo: "Higiene y Limpieza", carpeta: "higiene" },
     medicamentos: { titulo: "Medicamentos",       carpeta: "medicamentos" }
