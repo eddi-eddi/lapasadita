@@ -943,9 +943,9 @@ function guardarCarrito() {
 // ⚠️ NÚMERO DE WHATSAPP DE LA TIENDA (para recibir los pedidos).
 //     Formato: 52 (México) + lada + número, SOLO dígitos.
 //     Ejemplo: "526461234567"
-//     Vacío ("") por ahora: WhatsApp se abre para que el cliente
-//     elija el chat. PON AQUÍ EL NÚMERO NUEVO CUANDO LO TENGA.
-const NUMERO_WHATSAPP = "";
+//     Ahora mismo está en CEROS (marcador provisional): WhatsApp
+//     marcará "número inválido" hasta que pongas el número real.
+const NUMERO_WHATSAPP = "000000000000";
 
 function enviarPedido() {
     const nombreCampo = document.getElementById("nombreCliente");
