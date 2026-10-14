@@ -1,0 +1,146 @@
+# ============================================================
+#  ⚙️ CONFIGURACIÓN DEL PANEL DE ADMINISTRACIÓN
+#     Frutería La Pasadita — Sveltia CMS
+# ============================================================
+#
+#  ➜ SOLO HAY QUE CAMBIAR UNA COSA: la línea "repo:" de abajo,
+#    poniendo tu usuario y el nombre de tu repositorio en GitHub.
+#
+#       repo: miusuario/fruteria-la-pasadita
+#
+#  El resto está listo para funcionar.
+# ============================================================
+
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+
+# ------------------------------------------------------------
+#  DÓNDE SE GUARDAN LOS CAMBIOS
+#  El panel escribe directamente en tu repositorio de GitHub.
+#  GitHub Pages vuelve a publicar la web en ~1 minuto.
+# ------------------------------------------------------------
+backend:
+  name: github
+  repo: eddi-eddi/lapasadita   # ✅ Ya configurado
+  branch: main              # si tu repositorio usa "master", cámbialo aquí
+
+
+# ------------------------------------------------------------
+#  FOTOS
+#  Las fotos subidas desde el panel se guardan en la carpeta
+#  "img/" del repositorio y se sirven desde "/img/".
+# ------------------------------------------------------------
+media_folder: /img
+public_folder: /img
+
+
+# ------------------------------------------------------------
+#  CÓMO SE LLAMAN LAS FOTOS AL SUBIRLAS
+# ------------------------------------------------------------
+#  Por defecto el panel conserva el nombre original del archivo,
+#  que casi siempre es algo inútil como
+#      pasted-image-1791949517128.png   o   IMG_1234.JPG
+#
+#  Con "filename_template" la foto toma el nombre del producto.
+#  Con "slugify_filename" se le quitan acentos, espacios,
+#  mayúsculas y caracteres raros.
+#
+#      "Galletas María (2).PNG"   ->   galletas-maria.png
+#      "Pechuga de Pollo.jpg"     ->   pechuga-de-pollo.jpg
+#
+#  Si dos productos se llaman igual, el panel agrega un número.
+# ------------------------------------------------------------
+media_libraries:
+  all:
+    slugify_filename: true
+    filename_template: '{{fields.nombre}}'
+    max_file_size: 2097152      # 2 MB por foto. Cambia o quita esta línea si quieres.
+
+
+# ------------------------------------------------------------
+#  CATÁLOGO DE PRODUCTOS
+#  Todos los productos viven en UN SOLO archivo:
+#  js/productos.json, que es el que lee la página.
+# ------------------------------------------------------------
+collections:
+  - name: productos
+    label: Productos
+    label_singular: Producto
+
+    # Archivo donde se guardan. Es un arreglo de objetos.
+    file: /js/productos.json
+
+    # Lo que se muestra como título de cada producto en la lista.
+    identifier_field: nombre
+    summary: "{{nombre}} — ${{precio}}"
+
+    # Columnas de la lista y agrupación por categoría.
+    sortable_fields: [categoria, nombre, precio]
+    view_groups:
+      - { label: Categoría, field: categoria }
+
+    fields:
+      - label: Nombre del producto
+        name: nombre
+        widget: string
+        required: true
+        hint: "Tal como lo verá el cliente. Ejemplo: Bistec de Diezmillo"
+
+      - label: Categoría
+        name: categoria
+        widget: select
+        required: true
+        hint: "Define en qué sección aparece el producto."
+        options:
+          - { label: "Carnicería",          value: carniceria }
+          - { label: "Frutas y Verduras",   value: frutas }
+          - { label: "Lácteos",             value: lacteos }
+          - { label: "Bebidas",             value: bebidas }
+          - { label: "Snacks",              value: snacks }
+
+      - label: Precio
+        name: precio
+        widget: number
+        value_type: float
+        min: 0
+        required: true
+        hint: "Solo el número. El panel agrega el $ solo."
+
+      - label: Unidad
+        name: unidad
+        widget: string
+        required: false
+        hint: "Texto después del precio. Ejemplos: kg, pza, lt. Déjalo vacío si no aplica."
+
+      - label: Foto del producto
+        name: imagen
+        widget: image
+        required: true
+        hint: "Ideal: foto de fondo blanco. Sube una nueva o elige una ya existente."
+
+      - label: ¿Es promoción?
+        name: promo
+        widget: boolean
+        default: false
+        required: false
+        hint: "Sí = etiqueta roja «Promo» y aparece en el menú Promociones."
+
+      - label: ¿Va en el carrusel superior?
+        name: carrusel
+        widget: boolean
+        default: false
+        required: false
+        hint: "Sí = aparece en el carrusel de la parte superior de la página."
+
+      - label: ¿Aparecer en Destacados?
+        name: destacado
+        widget: boolean
+        default: true
+        required: false
+        hint: "Sí = rota en la sección Destacados. Desmarca para quitarlo de ahí."
+
+      - label: Nota interna
+        name: nota
+        widget: text
+        required: false
+        hint: "Solo la ves tú. NO se muestra en la página. Úsala para recordar pendientes."

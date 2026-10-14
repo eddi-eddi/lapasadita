@@ -1,0 +1,134 @@
+[
+  {
+    "nombre": "Bistec de Diezmillo",
+    "categoria": "carniceria",
+    "precio": 120,
+    "unidad": "kg",
+    "imagen": "img/carniceria/bistecdiesmillo.jpg",
+    "promo": true,
+    "carrusel": true,
+    "destacado": true,
+    "nota": ""
+  },
+  {
+    "nombre": "Pechuga de Pollo",
+    "categoria": "carniceria",
+    "precio": 99.9,
+    "unidad": "kg",
+    "imagen": "img/carniceria/PECHUGADEPOLLO.jpg",
+    "promo": false,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "PRECIO PROVISIONAL: se cargó de ejemplo. Confirmar el precio real."
+  },
+  {
+    "nombre": "Lechuga Bola",
+    "categoria": "frutas",
+    "precio": 25,
+    "unidad": "",
+    "imagen": "img/frutasyverduras/lechugabola.jpg",
+    "promo": true,
+    "carrusel": true,
+    "destacado": true,
+    "nota": ""
+  },
+  {
+    "nombre": "NutriLeche 1L",
+    "categoria": "lacteos",
+    "precio": 28,
+    "unidad": "",
+    "imagen": "img/lacteos/nutrileche.jpg",
+    "promo": false,
+    "carrusel": true,
+    "destacado": true,
+    "nota": ""
+  },
+  {
+    "nombre": "Yomi Lala 100g",
+    "categoria": "lacteos",
+    "precio": 18,
+    "unidad": "",
+    "imagen": "img/lacteos/yomi.jpg",
+    "promo": true,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "PRECIO PROVISIONAL: se cargó de ejemplo. Confirmar el precio real."
+  },
+  {
+    "nombre": "Coca-Cola 600ml",
+    "categoria": "bebidas",
+    "precio": 28,
+    "unidad": "",
+    "imagen": "img/bebidas/cocacola600.jpg",
+    "promo": true,
+    "carrusel": true,
+    "destacado": true,
+    "nota": ""
+  },
+  {
+    "nombre": "Jumex 0% Manzana",
+    "categoria": "bebidas",
+    "precio": 18,
+    "unidad": "",
+    "imagen": "img/bebidas/jumex.jpg",
+    "promo": false,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "PRECIO PROVISIONAL: se cargó de ejemplo. Confirmar el precio real."
+  },
+  {
+    "nombre": "Monster Energy 473ml",
+    "categoria": "bebidas",
+    "precio": 49,
+    "unidad": "",
+    "imagen": "img/bebidas/monster.jpg",
+    "promo": false,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "PRECIO PROVISIONAL: se cargó de ejemplo. Confirmar el precio real."
+  },
+  {
+    "nombre": "Pake Taxo 250gr",
+    "categoria": "snacks",
+    "precio": 25,
+    "unidad": "",
+    "imagen": "img/snacks/paketaxo.jpg",
+    "promo": true,
+    "carrusel": true,
+    "destacado": true,
+    "nota": ""
+  },
+  {
+    "nombre": "Doritos Nacho 76g",
+    "categoria": "snacks",
+    "precio": 25,
+    "unidad": "",
+    "imagen": "img/snacks/doritos250.jpg",
+    "promo": true,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "REVISAR PRESENTACION: la foto muestra 76 g pero el archivo se llama doritos250.jpg. Si es bolsa de 250 g, corregir nombre, precio y foto. PRECIO PROVISIONAL."
+  },
+  {
+    "nombre": "Cheetos Flamin' Hot 145g",
+    "categoria": "snacks",
+    "precio": 38,
+    "unidad": "",
+    "imagen": "img/snacks/cheetosflaming145.jpg",
+    "promo": false,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "PRECIO PROVISIONAL: se cargó de ejemplo. Confirmar el precio real."
+  },
+  {
+    "nombre": "Galletas Maria",
+    "categoria": "snacks",
+    "precio": 25,
+    "unidad": "250g",
+    "imagen": "/img/galletas-maria.png",
+    "promo": true,
+    "carrusel": false,
+    "destacado": true,
+    "nota": "revertir cambios de promo en 1 mes"
+  }
+]

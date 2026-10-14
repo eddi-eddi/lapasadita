@@ -1,0 +1,1060 @@
+/* =======================
+   RESET Y BASE
+======================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Indicador visible para quien navega con teclado
+   (tiene más especificidad que el "outline: none" del buscador) */
+:focus-visible {
+    outline: 3px solid #00c9a7;
+    outline-offset: 2px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* =======================
+   HEADER - VERSIÓN MEJORADA
+======================= */
+
+header {
+    background: #1e3a2f;
+    color: white;
+    padding: 14px 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.65rem;
+    font-weight: 700;
+    white-space: nowrap;
+    /* ← Evita que se parta en dos líneas */
+    flex-shrink: 0;
+}
+
+
+/* Cabecera en móvil: reglas al final del archivo (ver MEDIA QUERIES) */
+
+header input {
+    padding: 12px 40px 12px 15px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    outline: none;
+}
+
+header input::placeholder {
+    color: #9aa4ae;
+}
+
+
+/* Contenedor del buscador (permite el botón de borrar) */
+
+.search-box {
+    position: relative;
+    /* basis 0% para que el buscador y el botón del carrito
+       siempre quepan en la misma fila (se reparten el espacio) */
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: 520px;
+}
+
+.search-clear {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: #eef1f4;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+}
+
+.search-clear:hover {
+    background: #dfe4ea;
+    color: #111;
+}
+
+
+/* Botón del carrito en el header */
+
+.cart-header-btn {
+    background: #00c9a7;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 30px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 201, 167, 0.35);
+    transition: background 0.25s, transform 0.2s;
+}
+
+.cart-header-btn:hover {
+    background: #00b89a;
+    transform: translateY(-2px);
+}
+
+
+/* =======================
+   MENÚ DE CATEGORÍAS
+======================= */
+
+.menu {
+    background: white;
+    padding: 10px 12px;
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-item {
+    background: #f1f5f9;
+    padding: 9px 16px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
+.menu-item.active,
+.menu-item:hover {
+    background: #00c9a7;
+    color: white;
+}
+
+
+/* =======================
+   CARRUSEL DE PROMOCIONES
+   - Diapositivas con banner (imagen a pantalla completa)
+   - Diapositivas con producto ya cargado (foto + precio + botón)
+======================= */
+
+.carousel {
+    position: relative;
+    /* Más estrecho: la imagen ocupa mucho más del contenedor */
+    width: calc(100% - 30px);
+    max-width: 780px;
+    height: 300px;
+    margin: 20px auto 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1e3a2f;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.55s ease;
+    will-change: transform;
+}
+
+.slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Diapositiva con banner --- */
+/* La promo se muestra COMPLETA (object-fit: contain), nunca recortada.
+   El fondo desenfocado rellena los laterales para que el carrusel
+   se vea lleno en lugar de con franjas blancas. */
+
+.slide-banner {
+    position: relative;
+    overflow: hidden;
+    background: #1e3a2f;
+}
+
+.banner-fondo {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    filter: blur(30px);
+    opacity: 0.75;
+}
+
+.banner-frente {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* --- Diapositiva con producto --- */
+
+.promo-slide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+    padding: 20px 44px;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.promo-slide:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* La caja se ajusta al tamaño de cada foto, así no quedan
+   franjas grises vacías con imágenes apaisadas */
+.promo-slide > img {
+    max-width: 255px;
+    max-height: 235px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.promo-slide .card-content {
+    flex: 0 1 auto;
+    max-width: 400px;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.promo-slide h3 {
+    font-size: 1.55rem;
+    min-height: 0;
+    margin-bottom: 2px;
+    color: #1e3a2f;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.promo-slide .price {
+    font-size: 2rem;
+    margin: 4px 0 14px;
+}
+
+.promo-slide .price small {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #777;
+}
+
+.promo-slide button {
+    position: static;
+    background: #00c9a7;
+    color: white;
+    border: none;
+    padding: 11px 26px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 201, 167, 0.32);
+    transition: background 0.25s, transform 0.2s;
+}
+
+.promo-slide button:hover {
+    background: #00b89a;
+    transform: translateY(-2px);
+}
+
+.promo-slide button.agregado {
+    background: #1e3a2f;
+    transform: none;
+}
+
+/* Etiqueta de categoría (gris) y de promoción (roja) */
+.promo-slide .tag,
+.promo-slide .cat-tag {
+    position: static;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.promo-slide .cat-tag {
+    background: #eef1f4;
+    color: #1e3a2f;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+
+/* --- Flechas de navegación --- */
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(30, 58, 47, 0.72);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s;
+}
+
+.carousel-nav:hover {
+    background: #1e3a2f;
+}
+
+.carousel-prev { left: 12px; }
+.carousel-next { right: 12px; }
+
+
+/* --- Puntos indicadores --- */
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.carousel-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.carousel-dot:hover {
+    background: #94a3b8;
+}
+
+.carousel-dot.activo {
+    background: #00c9a7;
+    width: 26px;
+    border-radius: 6px;
+}
+
+
+/* =======================
+   CONTENEDOR PRINCIPAL
+======================= */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0 20px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+    color: #1e3a2f;
+    font-weight: 600;
+}
+
+
+/* Botón ⏸ Pausar / ▶ Reanudar de los destacados */
+
+.btn-rotar {
+    background: #f1f5f9;
+    color: #1e3a2f;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.25s;
+}
+
+.btn-rotar:hover {
+    background: #e2e8f0;
+}
+
+.btn-rotar[hidden] {
+    display: none;
+}
+
+
+/* Línea informativa bajo el título */
+
+.rotar-info {
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    margin: -12px 0 20px;
+}
+
+.rotar-info:empty {
+    display: none;
+}
+
+
+/* =======================
+   GRID DE PRODUCTOS
+======================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+
+/* Entrada suave de las tarjetas mientras los destacados rotan.
+   La animación se reinicia sola cada vez que una tarjeta vuelve a
+   aparecer (pasa de display:none a flex). */
+
+@keyframes destacadoEntra {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.products-grid.rotando .card {
+    animation: destacadoEntra 0.35s ease backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .products-grid.rotando .card {
+        animation: none;
+    }
+}
+
+
+/* =======================
+   TARJETAS DE PRODUCTOS
+======================= */
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.09);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #00c9a7;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card button:hover {
+    background: #00b89a;
+}
+
+/* Confirmación visual al agregar un producto */
+.card button.agregado {
+    background: #1e3a2f;
+}
+
+/* Respuesta táctil al presionar */
+.card:active {
+    transform: scale(0.97);
+}
+
+.card img {
+    width: 100%;
+    height: 155px;
+    object-fit: contain;
+    background: #f8f9fa;
+    padding: 8px;
+}
+
+.card-content {
+    padding: 12px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    min-height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.price {
+    color: #00c9a7;
+    font-size: 1.28rem;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4757;
+    color: white;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+
+/* =======================
+   CARRITO
+======================= */
+
+.carrito {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 380px;
+    height: 100vh;
+    background: white;
+    box-shadow: -8px 0 25px rgba(0, 0, 0, 0.25);
+    transition: right 0.4s ease;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.carrito.activo {
+    right: 0;
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #666;
+    cursor: pointer;
+}
+
+.carrito input,
+.carrito select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.item-carrito {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.cantidad-btns button {
+    background: #f1f5f9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+
+/* =======================
+   BOTÓN FLOTANTE
+======================= */
+
+.btn-flotante {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    background: #00c9a7;
+    color: white;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 201, 167, 0.35);
+    cursor: pointer;
+    z-index: 1100;
+}
+
+
+/* =======================
+   OVERLAY
+======================= */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 900;
+}
+
+.overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Con el carrito abierto el fondo no debe moverse (sobre todo en móvil) */
+
+body.carrito-abierto {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Con el carrito abierto el botón flotante sobra */
+body.carrito-abierto .btn-flotante {
+    display: none;
+}
+
+
+/* =======================
+   MENSAJE "SIN RESULTADOS"
+======================= */
+
+.sin-resultados {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+    padding: 45px 20px;
+    background: white;
+    border-radius: 16px;
+    color: #666;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.sin-resultados strong {
+    color: #1e3a2f;
+}
+
+.sin-resultados button {
+    margin-top: 15px;
+    background: #00c9a7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sin-resultados button:hover {
+    background: #00b89a;
+}
+
+/* Aviso de error si js/productos.json no se pudo leer */
+.sin-resultados.aviso-catalogo {
+    display: block;
+}
+
+
+/* =======================
+   BOTONES DEL CARRITO
+======================= */
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 12px 0;
+    cursor: pointer;
+}
+
+.btn-vaciar {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* =======================
+   TOAST
+======================= */
+
+.toast {
+    position: fixed;
+    bottom: 85px;
+    right: 15px;
+    left: 15px;
+    margin: 0 auto;
+    max-width: 340px;
+    background: #1e3a2f;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s;
+    z-index: 1200;
+    text-align: center;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botones dentro del toast: "Deshacer" y la sugerencia al refrescar */
+.toast button {
+    margin: 6px 4px 0;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #00c9a7;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.toast button:hover {
+    background: #00b89a;
+}
+
+.toast button.toast-peligro {
+    background: #e74c3c;
+}
+
+.toast button.toast-peligro:hover {
+    background: #c0392b;
+}
+
+/* Con el carrito abierto el toast sube, para no tapar
+   los botones "Pedir por WhatsApp" y "Vaciar Carrito" */
+body.carrito-abierto .toast {
+    top: 84px;
+    bottom: auto;
+}
+
+
+/* =======================
+   CONTADORES DEL CARRITO
+   Rebota cuando cambia la cantidad
+======================= */
+
+#contador,
+#contador-header,
+#contador-flotante {
+    display: inline-block;
+}
+
+.contador-bounce {
+    animation: contadorPop 0.35s ease;
+}
+
+@keyframes contadorPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+
+/* =======================
+   VALIDACIÓN DE CAMPOS DEL CARRITO
+======================= */
+
+.campo-error {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: -8px 0 15px;
+}
+
+/* Sin mensaje pendiente: no ocupa espacio */
+.campo-error:empty {
+    display: none;
+}
+
+.campo-invalido {
+    border-color: #e74c3c !important;
+    background: #fff5f5;
+}
+
+
+/* =======================
+   FOOTER
+======================= */
+
+.footer {
+    background: #1e3a2f;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 40px;
+}
+
+.footer a {
+    color: #67e8b5;
+    text-decoration: none;
+}
+
+.redes a {
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.copy {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media (min-width: 769px) {
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+    }
+    .carousel {
+        height: 320px;
+    }
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 20px;
+    }
+    #products-grid .card img {
+        height: 175px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
+    }
+    #products-grid .card img {
+        height: 145px;
+    }
+}
+
+
+/* =======================
+   CABECERA EN PANTALLAS MEDIANAS Y PEQUEÑAS
+   El logo ocupa su propia fila y, debajo, van juntos
+   el buscador y el botón del carrito.
+   (Debe ir DESPUÉS de las reglas base para que aplique)
+======================= */
+
+@media (max-width: 768px) {
+    .logo {
+        order: 1;
+        flex: 1 0 100%;
+        font-size: 1.5rem;
+    }
+    .search-box {
+        order: 2;
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+    .cart-header-btn {
+        order: 3;
+        padding: 11px 16px;
+    }
+}
+
+
+/* =======================
+   CARRUSEL DE PRODUCTOS - RESPONSIVE
+======================= */
+
+@media (max-width: 768px) {
+    .promo-slide {
+        gap: 16px;
+        padding: 16px 56px;
+    }
+    .promo-slide > img {
+        max-width: 185px;
+        max-height: 200px;
+    }
+    .promo-slide h3 {
+        font-size: 1.2rem;
+    }
+    .promo-slide .price {
+        font-size: 1.55rem;
+        margin: 2px 0 10px;
+    }
+    .promo-slide button {
+        padding: 9px 20px;
+        font-size: 0.9rem;
+    }
+    .carousel-nav {
+        width: 34px;
+        height: 34px;
+        font-size: 1.35rem;
+    }
+    .carousel-prev { left: 8px; }
+    .carousel-next { right: 8px; }
+}
+
+/* En pantallas de 600px o menos el carrusel se pone vertical
+   (foto arriba, datos debajo) para que el texto no quede aplastado */
+
+@media (max-width: 600px) {
+    .carousel {
+        height: 255px;
+    }
+
+    .promo-slide {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+        padding: 10px 46px;
+        text-align: center;
+    }
+
+    .promo-slide > img {
+        max-width: 145px;
+        max-height: 115px;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .promo-slide .card-content {
+        align-items: center;
+        text-align: center;
+        max-width: none;
+        width: 100%;
+    }
+
+    .promo-slide .tag,
+    .promo-slide .cat-tag {
+        font-size: 10px;
+        padding: 2px 10px;
+        margin-bottom: 5px;
+    }
+
+    .promo-slide h3 {
+        font-size: 0.98rem;
+        -webkit-line-clamp: 1;
+        margin-bottom: 0;
+    }
+
+    .promo-slide .price {
+        font-size: 1.3rem;
+        margin: 2px 0 8px;
+        white-space: nowrap;
+    }
+
+    .promo-slide button {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+}

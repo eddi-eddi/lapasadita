@@ -1,0 +1,23 @@
+# ============================================================
+#  ARCHIVOS QUE NO SE SUBEN A GITHUB
+#  Frutería La Pasadita
+# ============================================================
+
+# Configuración personal de VS Code
+*.code-workspace
+.vscode/
+
+# Basura de Windows y macOS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# SEGURIDAD — nunca subir credenciales
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Dependencias de Node (por si algún día se agregan)
+node_modules/
