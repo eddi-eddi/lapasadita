@@ -860,7 +860,7 @@ function actualizarCarrito() {
         const li = document.createElement("li");
         li.innerHTML = `
             <div class="item-carrito">
-                <strong>${item.nombre}</strong><br>
+                <strong>${escaparHTML(item.nombre)}</strong><br>
                 <span>$${item.precio.toFixed(2)} × ${item.cantidad}</span>
                 <div class="cantidad-btns">
                     <button onclick="cambiarCantidad(${index}, -1)">–</button>
